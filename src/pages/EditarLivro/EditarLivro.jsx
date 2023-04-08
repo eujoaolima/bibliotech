@@ -80,7 +80,7 @@ export function EditarLivro() {
                         <Form.Label>Imagem da capa</Form.Label>
                         <Form.Control type="file" {...register("imagem")} />
                     </Form.Group>
-                    <Button type="submit" variant="success">Editar</Button>
+                    <Button type="submit" style={{ backgroundColor: "#248dad" }}>Editar</Button>
                 </Form>
             </Container>
         </div>
