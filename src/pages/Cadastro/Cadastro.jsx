@@ -27,11 +27,6 @@ export function Cadastro() {
   const navigate = useNavigate();
   const [mostrar, setMostrar] = useState(false);
 
-  if (usuarioLogado !== null) {
-    navigate("/");
-    return null;
-  }
-
   function onSubmit(data) {
     const { email, senha } = data;
     cadastrarEmailSenha(email, senha)
@@ -109,7 +104,7 @@ export function Cadastro() {
 
   return (
     <>
-      {usuarioLogado !== null ? (
+      {usuarioLogado === null ? (
         <section>
           <Container fluid className="my-5">
             <div className="row">
