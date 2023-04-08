@@ -22,12 +22,6 @@ export function Login() {
 
   const usuarioLogado = useContext(AuthContext);
 
-  if (usuarioLogado !== null) {
-    navigate("/");
-    return null;
-  }
-
-
   function onSubmit(data) {
     const { email, senha } = data;
     loginEmailSenha(email, senha)
@@ -101,18 +95,11 @@ export function Login() {
       });
   }
 
-
-
-  // Se tiver dados no objeto, está logado
-  if (usuarioLogado !== null) {
-    navigate("/");
-    return null;
-  }
-
   return (
     <>
-      {
-        usuarioLogado !== null ? ( <section>
+    {
+      usuarioLogado === null ? (
+        <section>
           <Container fluid className="my-5">     
           <div className="row">
             <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -121,7 +108,7 @@ export function Login() {
                 <p className="text-center">
                   <img src={logoIcon} width="70%" alt="Logo do app" />
                 </p>
-                <h5 class="card-title text-muted text-center mb-3 fw-light fs-3">Faça seu Login</h5>
+                <h5 className="card-title text-muted text-center mb-3 fw-light fs-3">Faça seu Login</h5>
                 <p className="text-muted mt-3 "> Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
                 </p>
                 <hr className="mt-0" />
@@ -204,8 +191,9 @@ export function Login() {
               </div>
             </div>    
           </Container>
-          </section> ) : (<Navigate to="/"/>)
-      }
+          </section> 
+      ) : (<Navigate to="/" />)
+    }
     </>
     );
 }
